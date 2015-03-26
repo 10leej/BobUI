@@ -1,6 +1,6 @@
 local _, cfg = ... --export config
 local addon, ns = ... --get addon namespace
- 
+
 --[[
 Note to users new to a config.lua file:
 	This is a file intended to provide configuration options,you edit these files quite simply. Make a change and 
@@ -12,6 +12,7 @@ a comma.
 Regards:
 10leej aka Eomi < Jehoovas Witnesses > US - Uther
 ]]
+
 --Module Control
 cfg.ActionBars		= true 	--Actionbars
 cfg.bags			= true  --Bags

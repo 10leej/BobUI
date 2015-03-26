@@ -7,6 +7,7 @@
 config.lua
 lib\!Boblib.lua
 lib\ncHoverBind.lua
+skinning\Aurora.lua
 skinning\skinning.lua
 misc\test.lua
 modules\actionbars\bars.lua
