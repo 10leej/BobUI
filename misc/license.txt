@@ -1,0 +1,29 @@
+Joshua A.E. Lee
+10leej@gmail.com
+bobssupportsite.co.nf
+
+Copyright 2012-2014
+ 
+The contents of this addon, excluding third-party resources, 
+are copyrighted to their authors with all rights reserved.
+Authors of this addon hereby grant you the following rights:
+
+1. You may make any modifications to the addons and 
+redistribute on the following websites:
+www.wowinterface.com
+www.curse.com (and associated hosting sites)
+www.tukui.org
+bobssupportsite.co.nf
+
+2. You cannot change the name of this addon unless authorized by
+copyright holder
+
+3. You may post updates for the addon this license is connected to 
+but you must rename the update to "AddonName"["UpdaterName" Update]
+
+4. This copyright shall be included in BobUI version 5.3.5 and higher.
+
+All rights not explicitly addressed in this license are reserved by 
+the copyright holders.
+
+You can write us at 10leej@gmail.com for reporting abuse.

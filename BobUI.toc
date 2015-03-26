@@ -1,0 +1,26 @@
+## Interface: 60100
+## Title: BobUI
+## Author: 10leej
+## Notes: A UI for the enthusiastic whatchamacolic
+## Credits: Zork, Quilight, Tukz, Monolit, Blooblahguy, Kemayo, Horau, Nightcracker, tekkub, Tuller, Game92, def9, Duugu
+
+config.lua
+lib\!Boblib.lua
+lib\ncHoverBind.lua
+skinning\skinning.lua
+misc\test.lua
+modules\actionbars\bars.lua
+modules\actionbars\xpbar.lua
+modules\actionbars\hideblizz.lua
+modules\announcements.lua
+modules\auras.lua
+modules\bag.lua
+modules\chat.lua
+modules\datatext.lua
+modules\loot.lua
+modules\minimap.lua
+modules\nameplates.lua
+modules\panels.lua
+modules\raidmod.lua
+modules\tooltip.lua
+modules\tweaks.lua
