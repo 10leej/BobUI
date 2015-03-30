@@ -1,28 +1,25 @@
 ﻿local _, cfg = ... --import config
 local addon, ns = ... --get addon namespace
 local isBeautiful = IsAddOnLoaded("!Beautycase") --!Beautycase check
+local AuroraCheck = IsAddOnLoaded("Aurora")
 
 if not cfg.bags then return end
---we are no lo0nger supporting a one bag layout, I never got it working like I wanted anyway
+if AuroraCheck then return end
 --this is a classic bags layout originally started in AftermathUI that I more or less forked
 
 local _G = _G -- import globals for faster usage
 
 --backdrop function
-if IsAddOnLoaded("Aurora") then
-  return
-else
-  local function CreateBackdrop(frame)
-    frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
-      insets = {top = 2, left = 2, bottom = 2, right = 2}})
-    frame:SetBackdropColor(unpack(cfg.bColor))
-    frame:SetBackdropBorderColor(unpack(cfg.bColor))
-    if isBeautiful then
-      frame:CreateBeautyBorder(cfg.border.size.large)
-      frame:SetBeautyBorderTexture(cfg.border.texture)
-      frame:SetBeautyBorderColor(unpack(cfg.border.color))
-    end
-  end
+local function CreateBackdrop(frame)
+frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
+  insets = {top = 2, left = 2, bottom = 2, right = 2}})
+frame:SetBackdropColor(unpack(cfg.bColor))
+frame:SetBackdropBorderColor(unpack(cfg.bColor))
+if isBeautiful then
+  frame:CreateBeautyBorder(cfg.border.size.large)
+  frame:SetBeautyBorderTexture(cfg.border.texture)
+  frame:SetBeautyBorderColor(unpack(cfg.border.color))
+end
 end
 
 --bags

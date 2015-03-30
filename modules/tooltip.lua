@@ -9,19 +9,16 @@ if not cfg.ToolTip then return end
 --function library
 -----------------------------------------------
 --backdrop function
-if IsAddOnLoaded("Aurora") then
-  return
-else
-  local function CreateBackdrop(frame)
-    frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
-      insets = {top = 2, left = 2, bottom = 2, right = 2}})
-    frame:SetBackdropColor(unpack(cfg.bColor))
-    frame:SetBackdropBorderColor(unpack(cfg.bColor))
-    if isBeautiful then
-      frame:CreateBeautyBorder(cfg.border.size.large)
-      frame:SetBeautyBorderTexture(cfg.border.texture)
-      frame:SetBeautyBorderColor(unpack(cfg.border.color))
-    end
+if IsAddOnLoaded("Aurora") then return end
+local function CreateBackdrop(frame)
+  frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
+    insets = {top = 2, left = 2, bottom = 2, right = 2}})
+  frame:SetBackdropColor(unpack(cfg.bColor))
+  frame:SetBackdropBorderColor(unpack(cfg.bColor))
+  if isBeautiful then
+    frame:CreateBeautyBorder(cfg.border.size.large)
+    frame:SetBeautyBorderTexture(cfg.border.texture)
+    frame:SetBeautyBorderColor(unpack(cfg.border.color))
   end
 end
 --make some function we'll call later
