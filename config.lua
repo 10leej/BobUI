@@ -61,10 +61,7 @@ cfg.Interrupts		= true  --Announce interrupts
 cfg.rez				= true  --Rez announcer --Channels are SAY,EMOTE,PARTY,INSTANCE_CHAT,GUILD,OFFICER,YELL,RAID,RAID_WARNING
 cfg.channelannounce = "INSTANCE_CHAT" --Pick a channel to shout in.
 cfg.autoquest 		= true --auto accept/complete quests
---viewport
-cfg.ViewPort = {
-    bottom = 0, --no other directions quite yet, still being implemented recommend 85 for bottom
-}
+
 cfg.panels = { --six panels move em where ya want
     A = {--name: BobPanelA
 		enable = true,

@@ -168,15 +168,3 @@ frame:SetScript("OnUpdate", function (self, delta)
 		print("BobUI is now loaded. Type /bobui for info")
 	end
 end)
-
---viewport
-local f = CreateFrame("Frame", "BobViewport")
-f:RegisterEvent("PLAYER_LOGIN")
-f:RegisterEvent("PLAYER_ENTERING_WORLD")
-f:RegisterEvent("ADDON_LOADED")
-f:RegisterEvent("PET_BATTLE_OVER")
-
-local function eventHandler(self, event, ...)
-    WorldFrame:SetPoint("BOTTOMRIGHT", 0,cfg.ViewPort.bottom)
-end
-f:SetScript("OnEvent",eventHandler)
