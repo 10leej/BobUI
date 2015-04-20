@@ -44,6 +44,15 @@ end
 SLASH_ABOUT1 = "/about"
 SLASH_ABOUT2 = "/bobui"
 
+SlashCmdList["PATCH"] = function()
+	print("6.0.8b2")
+	print("Implement oUF debuff filters to show only one debuff on raid frames from a select list.")
+
+	print("Remove Numeration")
+end
+SLASH_PATCH1 = "/patch"
+SLASH_PATCH2 = "/update"
+
 --Pixel Perfection
 if not cfg.AutoScaleUI then
     --Manual UI Scaling
