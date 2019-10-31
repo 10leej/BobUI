@@ -6,7 +6,7 @@ local isBeautiful = IsAddOnLoaded("!Beautycase") --!Beautycase check
 
 --local backdrop function
 local function CreateBackdrop(frame)
-    frame:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize,
+    frame:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
         insets = {top = 2, left = 2, bottom = 2, right = 2}})
     frame:SetBackdropColor(unpack(cfg.bColor))
     frame:SetBackdropBorderColor(unpack(cfg.bColor))
@@ -17,7 +17,7 @@ local function CreateBackdrop(frame)
 	end
 end
 
---Some quick cheaty functions for variable bordersizes, do need to expand on this function
+--Some quick cheaty functions for variable bordersizes
 local function Borderize(frame) -- style our frame
     if frame then
         frame:CreateBeautyBorder(12)
@@ -36,56 +36,56 @@ if isBeautiful then
 				GameMenuButtonHelp:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonHelp:SetBeautyBorderPadding(1)
 				GameMenuButtonHelp:SetBeautyBorderTexture(cfg.border.texture)
-
+				
 				GameMenuButtonStore:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonStore:SetBeautyBorderPadding(1)
 				GameMenuButtonStore:SetBeautyBorderTexture(cfg.border.texture)
-
+				
 				GameMenuButtonOptions:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonOptions:SetBeautyBorderPadding(1)
 				GameMenuButtonOptions:SetBeautyBorderTexture(cfg.border.texture)
-
+				
 				GameMenuButtonUIOptions:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonUIOptions:SetBeautyBorderPadding(1)
 				GameMenuButtonUIOptions:SetBeautyBorderTexture(cfg.border.texture)
-
+				
 				GameMenuButtonKeybindings:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonKeybindings:SetBeautyBorderPadding(1)
 				GameMenuButtonKeybindings:SetBeautyBorderTexture(cfg.border.texture)
-
+				
 				GameMenuButtonMacros:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonMacros:SetBeautyBorderPadding(1)
 				GameMenuButtonMacros:SetBeautyBorderTexture(cfg.border.texture)
-
+				
 				GameMenuButtonAddons:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonAddons:SetBeautyBorderPadding(1)
 				GameMenuButtonAddons:SetBeautyBorderTexture(cfg.border.texture)
-
+				
 				GameMenuButtonLogout:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonLogout:SetBeautyBorderPadding(1)
 				GameMenuButtonLogout:SetBeautyBorderTexture(cfg.border.texture)
-
+				
 				GameMenuButtonQuit:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonQuit:SetBeautyBorderPadding(1)
 				GameMenuButtonQuit:SetBeautyBorderTexture(cfg.border.texture)
-
+				
 				GameMenuButtonContinue:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonContinue:SetBeautyBorderPadding(1)
 				GameMenuButtonContinue:SetBeautyBorderTexture(cfg.border.texture)
 			end
-
+			
 			StaticPopup1Button1:CreateBeautyBorder(cfg.border.size.large)
 			StaticPopup1Button1:SetBeautyBorderPadding(1)
 			StaticPopup1Button1:SetBeautyBorderTexture(cfg.border.texture)
-
+			
 			StaticPopup1Button2:CreateBeautyBorder(cfg.border.size.large)
 			StaticPopup1Button2:SetBeautyBorderPadding(1)
 			StaticPopup1Button2:SetBeautyBorderTexture(cfg.border.texture)
-
+			
 			DropDownList1MenuBackdrop:CreateBeautyBorder(cfg.border.size.large)
 			DropDownList1MenuBackdrop:SetBeautyBorderPadding(-1)
 			DropDownList1MenuBackdrop:SetBeautyBorderTexture(cfg.border.texture)
-
+			
 			DropDownList2MenuBackdrop:CreateBeautyBorder(cfg.border.size.large)
 			DropDownList2MenuBackdrop:SetBeautyBorderPadding(-1)
 			DropDownList2MenuBackdrop:SetBeautyBorderTexture(cfg.border.texture)

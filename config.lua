@@ -3,7 +3,7 @@ local addon, ns = ... --get addon namespace
 
 --[[
 Note to users new to a config.lua file:
-	This is a file intended to provide configuration options,you edit these files quite simply. Make a change and
+	This is a file intended to provide configuration options,you edit these files quite simply. Make a change and 
 save the file. You can even edit the files while the game is loaded, just change the value save it then type /reload
 or /rl into the game chat to realod the user interface.
 	I highly recommend keeping all the punctuation in the same place as it can cause errors if you accidently remove
@@ -94,7 +94,7 @@ cfg.panels = { --six panels move em where ya want
 		width = 60,
 		height = 60,
 	},
-
+	
 }
 
 --------------------------------------------------------------------------------------------------
@@ -134,7 +134,7 @@ cfg.nameplates = { --not valid as Nameplates currently don't exist, yet
 --Minimap size
 cfg.minimap = {
 	position = {'TOPRIGHT',UIParent,0,0},
-	width = 180,
+	width = 180,			
 	height = 180,
 }
 --Zone text

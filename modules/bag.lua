@@ -1,4 +1,4 @@
-local _, cfg = ... --import config
+﻿local _, cfg = ... --import config
 local addon, ns = ... --get addon namespace
 local isBeautiful = IsAddOnLoaded("!Beautycase") --!Beautycase check
 if IsAddOnLoaded("Aurora") then return end --yeah no point in skinning the bags twice
@@ -11,7 +11,7 @@ local _G = _G -- import globals for faster usage
 
 --backdrop function (I should really just add this to a library)
 local function CreateBackdrop(frame)
-  frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize,
+  frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
     insets = {top = 2, left = 2, bottom = 2, right = 2}})
   frame:SetBackdropColor(unpack(cfg.bColor))
   frame:SetBackdropBorderColor(unpack(cfg.bColor))
@@ -23,7 +23,7 @@ local function CreateBackdrop(frame)
 end
 
 --bags
-local ContainerFrame1bg = CreateFrame('Frame', nil, _G['ContainerFrame1'])
+local ContainerFrame1bg = CreateFrame('Frame', nil, _G['ContainerFrame1'])              
 ContainerFrame1bg:SetPoint('TOPLEFT', 8, -9)
 ContainerFrame1bg:SetPoint('BOTTOMRIGHT', -4, 3)
 ContainerFrame1bg:SetFrameStrata("HIGH")
@@ -47,7 +47,7 @@ for i = 1, 80 do -- Hide the regions.  There are 80, but there is an included fa
   local region = select(i, _G["BankFrame"]:GetRegions())
   if not region then break else region:SetAlpha(0) end
 end
-
+                                
 local BankFramebg = CreateFrame('Frame', nil, _G['BankFrame'])
 BankFramebg:SetPoint('TOPLEFT', -35, 45)
 BankFramebg:SetPoint('BOTTOMRIGHT', 20, -10)
@@ -57,10 +57,10 @@ CreateBackdrop(BankFramebg)
 for i = 1, 24 do
    _G["BankFrameItem"..i]:SetBackdrop({
     bgFile = "Interface\\Buttons\\WHITE8x8",
-      insets = {top = -1, left = -1, bottom = -1, right = -1},
+      insets = {top = -1, left = -1, bottom = -1, right = -1}, 
     })
   _G["BankFrameItem"..i]:SetBackdropColor(unpack(cfg.bColor))
-end
+end            
 
 --hide stuff we don't want
 for i = 1, 12 do
@@ -94,7 +94,7 @@ hooksecurefunc("ContainerFrame_GenerateFrame", function(frame)
     _G[name.."Item"..i]:SetFrameLevel(4)
     _G[name.."Item"..i]:SetBackdrop({
       bgFile = "Interface\\Buttons\\WHITE8x8",
-        insets = {top = -1, left = -1, bottom = -1, right = -1},
+        insets = {top = -1, left = -1, bottom = -1, right = -1}, 
       })
     _G[name.."Item"..i]:SetBackdropColor(unpack(cfg.bColor))
     _G[name.."Item"..i]:SetNormalTexture("")

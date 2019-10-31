@@ -6,7 +6,7 @@ local isBeautiful = IsAddOnLoaded("!Beautycase") --!Beautycase check
 if not cfg.Panels then return end --module control
 
 local function CreateBackdrop(frame)
-    frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize,
+    frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
         insets = {top = 2, left = 2, bottom = 2, right = 2}})
     frame:SetBackdropColor(unpack(cfg.bColor))
     frame:SetBackdropBorderColor(unpack(cfg.bColor))

@@ -1,0 +1,51 @@
+[U][FONT="Comic Sans MS"]We need to update screenshots --10leej[/FONT][/U]
+
+BobUI is a Default UI modification/replacement/enhancement (call it what you want it really is just a skinned default UI) addon written and intended to be efficient and bug free while still retaining the functionalities of a fully usable UI. To break it down that means BobUI is the default user interface that's been modified to look better while being extremely flexible (practically every part of this UI can be modified in some way).
+
+[QUOTE][U]Addons[/U]:
+[URL="http://www.wowinterface.com/downloads/info13981-NeavUI.html"]!Beautycase[/URL] --Link is to NeavUI download as that contains latest version
+!BobSkins --Cause we love skins
+BobRaid --Default raid frame skinning for !Beautycase
+BobUI --Core UI addon
+BobUI-Setup --Just sets chat frames
+[URL="http://www.wowinterface.com/downloads/info22660-ClickMenu.html"]Click-Menu[/URL]
+[URL="http://www.wowinterface.com/downloads/info17434-NumerationDamageMeter.html"]Numeration[/URL]
+[URL="http://www.wowinterface.com/downloads/info9994-oUF.html"]oUF[/URL]
+[URL="http://www.wowinterface.com/downloads/info11503-oUFSmoothUpdate.html"]oUF_Smooth Update[/URL]
+[URL="http://www.wowinterface.com/downloads/info22700-oUF_Bob.html"]oUF_Bob[/URL]
+[URL="http://www.wowinterface.com/downloads/info19263-rThreat.html"]rThreat[/URL]
+[URL="http://www.wowinterface.com/downloads/info17602-tullaCC.html"]tullaCC[/URL]
+[URL="http://www.wowinterface.com/downloads/info15636-tullaRange.html"]tullaRange[/URL]
+[URL="http://www.wowinterface.com/downloads/info18053-xCT.html#info"]xCT[/URL] (not xCT+ this is the base xCT)[/QUOTE]
+
+
+[QUOTE][U]Installing BobUI:[/U]
+Backup your "Interface" folder. Then place all the files included in the download in your "Interface" folder. Some aspects may be out of place and requires moving but should work fairly well on any screen resolution.
+
+Non-wide screen resolutions will have to move stuff, I suggest either disabling panels/or just moving everything around to suit your needs. Keep in mind BobUI is built to be flexible and is easily one of the most flexible UI's out there.
+
+For the exact setup in the screenshots I use.
+[LIST=1]
+[*]Make a New chat frame call it "G,S,W"
+[*]type "/uisetup" this command sets the chat frame positions, neccesary cVARS (like disabling minimap rotation on a square map, and and such) 
+[*]to ensure rthreat is in correct position type "/rthreat reset"
+[/LIST][/QUOTE]
+
+[QUOTE][U]Configuring BobUI[/U]
+BobUI is built to be stupid flexible, aka I put in as many config options as I find I can implement.
+
+Thus as Im always find new ways to allow you guys to tinker with the config I have no plans for in game configuration in my own core addons (the ones with Bob in the name generally) and all config is done via the config.lua files listed in each addon.
+
+However if there is a config question merely ask and I'll do my best to tell you how it can be done.[/QUOTE]
+
+[QUOTE][U]Incompatible addons:[/U]
+Anything that modifies the default user interface's Actionbars/Unitframes/Clock/Minimap/Loot Frames
+Certain parts of MoveAnything[/QUOTE]
+
+Please post all bugs/issues/qq/death threats in the comments.
+
+[URL="http://www.wowinterface.com/downloads/info23146-BobUIBETAstablecandidate.html"]BobUI Beta[/URL] --Patch compatibility/stability not guaranteed.
+[URL="http://www.wowinterface.com/downloads/author-268924.html"]Check out some of my other addons[/URL]
+Feel like being awesome? [URL="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=P2DPPJ93CX8ZS"]Buy me a pepsi, only $1.50 where I live![/URL]
+
+Credits to Zork, Quilight, Tukz, Monolit, Blooblahguy, Kemayo, Horau, Nightcracker, tekkub, Tuller, Neal, Gello, Choonster.

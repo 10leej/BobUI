@@ -7,10 +7,10 @@ if cfg.lootframes then --module control
 	local frames = LootFrame
 	local LootFrame = LootFrame
 	local _G = _G -- import globals for faster usage
-
+	
 	--backdrop function
 	local function CreateBackdrop(frame)
-		frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize,
+		frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
 			insets = {top = 2, left = 2, bottom = 2, right = 2}})
 		frame:SetBackdropColor(unpack(cfg.bColor))
 		frame:SetBackdropBorderColor(unpack(cfg.bColor))
@@ -28,10 +28,10 @@ if cfg.lootframes then --module control
 	LootTargetPortrait:SetBackdropColor(unpack(cfg.bColor))
 
 	--kill the textures
-	local bg, titlebg, portrait, portraitframe, trcorner, tlcorner, top,
+	local bg, titlebg, portrait, portraitframe, trcorner, tlcorner, top, 
 	unknowntitle, topstreak, blcorner, brcorner, bottom, left, right, btncornerL,
 	btncornerR, btnbottom, portraitoverlay, title, prevtext, nextext = _G["LootFrame"]:GetRegions()
-
+	
 	bg:Hide()
 	titlebg:Hide()
 	portrait:Hide()
@@ -50,7 +50,7 @@ if cfg.lootframes then --module control
 	btncornerR:Hide()
 	btnbottom:Hide()
 	LootFrameInset:Hide()
-
+		
 	hooksecurefunc("LootFrame_UpdateButton", function(index)
 		local texture, item, quantity, quality, locked, isQuestItem, questId, isActive = GetLootSlotInfo(index)
 		_G["LootButton"..index.."IconQuestTexture"]:SetAlpha(0) -- hide that pesky quest item texture

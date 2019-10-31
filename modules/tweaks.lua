@@ -4,8 +4,8 @@ local addon, ns = ... --get addon namespace
 --RaidFrameResizer
 local n,w,h="CompactUnitFrameProfilesGeneralOptionsFrame" h,w=
 _G[n.."HeightSlider"],
-_G[n.."WidthSlider"]
-h:SetMinMaxValues(1,150)
+_G[n.."WidthSlider"] 
+h:SetMinMaxValues(1,150) 
 w:SetMinMaxValues(1,150)
 
 
@@ -27,7 +27,7 @@ end
 if cfg.AutoVendor then
 	local g = CreateFrame("Frame")
 	g:RegisterEvent("MERCHANT_SHOW")
-	g:SetScript("OnEvent", function()
+	g:SetScript("OnEvent", function()  
 	local bag, slot
 	  for bag = 0, 4 do
 		for slot = 0, GetContainerNumSlots(bag) do
@@ -102,23 +102,3 @@ end)
 SlashCmdList["BOBUI"] = function() Setup() end --hmm our slash command doesn't work?
 SLASH_BOBUI1 = "/bobsetup"
 SLASH_BOBUI2 = "/uisetup"
-
-SlashCmdList["ABOUT"] = function()
-	print("BobUI v6.1 developed by 10leej@wowinterface.com")
-	print(" ")
-    print("Slash Commands:")
-    print("/rl --for UI Reload")
-    print("/gm --to open Support/Help")
-    print("/rc --run a Ready Check")
-    print("/clc --Clears Combat log entries")
-	print(" ")
-	print("Features:")
-	print("Auto Repair (with guild support filterable by if in raid group)")
-	print("Auto Sells Greys")
-	print("Clickable URL Links in chat")
-	print("Pull Timer using /pull")
-	print(" ")
-	print("Have fun and enjoy playing.")
-end
-SLASH_ABOUT1 = "/about"
-SLASH_ABOUT2 = "/bobui"

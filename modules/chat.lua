@@ -7,7 +7,7 @@ if not cfg.Chat then return end --module control
 
 --backdrop function
 local function CreateBackdrop(frame) --I call this too much, time for a library I think
-    frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize,
+    frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
         insets = {top = 2, left = 2, bottom = 2, right = 2}})
     frame:SetBackdropColor(unpack(cfg.bColor))
     frame:SetBackdropBorderColor(unpack(cfg.bColor))
@@ -36,24 +36,24 @@ CHAT_PARTY_GUIDE_GET =  "|Hchannel:PARTY|h[PG]|h %s "
 --bg and instances
 CHAT_INSTANCE_CHAT_GET = "|Hchannel:INSTANCE_CHAT|h[I]|h %s: "
 CHAT_INSTANCE_CHAT_LEADER_GET = "|Hchannel:INSTANCE_CHAT|h[IL]|h %s: "
-
---whisper
+  
+--whisper  
 CHAT_WHISPER_INFORM_GET = "to %s "
 CHAT_WHISPER_GET = "from %s "
 CHAT_BN_WHISPER_INFORM_GET = "to %s "
 CHAT_BN_WHISPER_GET = "from %s "
-
+  
 --say / yell
 CHAT_SAY_GET = "%s "
 CHAT_YELL_GET = "%s "
-
+  
 --flags
 CHAT_FLAG_AFK = "[AFK] "
 CHAT_FLAG_DND = "[DND] "
 CHAT_FLAG_GM = "[GM] "
 
 local gsub = _G.string.gsub
-
+      
 for i = 1, NUM_CHAT_WINDOWS do
 	if ( i ~= 2 ) then
 		local f = _G["ChatFrame"..i]
@@ -156,11 +156,11 @@ end
 
 ---------------- > move chat frames to edge of screen
 do
-for i=1, NUM_CHAT_WINDOWS
-	do local cf = _G[format("%s%d", "ChatFrame", i)]
-		cf:SetClampedToScreen(true)
-		cf:SetClampRectInsets(0,0,0,0)
-	end
+for i=1, NUM_CHAT_WINDOWS 
+	do local cf = _G[format("%s%d", "ChatFrame", i)] 
+		cf:SetClampedToScreen(true) 
+		cf:SetClampRectInsets(0,0,0,0) 
+	end 
 end
 
 ---------------- > Chat tabs
@@ -277,7 +277,7 @@ local function kill(f) --kill it! kill it with fire!
 end
 
 do
-	-- Buttons Hiding/moving
+	-- Buttons Hiding/moving 
 	--local kill = function(f) f:Hide() end
 	ChatFrameMenuButton:Hide()
 	ChatFrameMenuButton:SetScript("OnShow", kill)
@@ -297,12 +297,12 @@ do
 	--Unlimited chatframes resizing
 		cf:SetMinResize(0,0)
 		cf:SetMaxResize(0,0)
-
+	
 	--Allow the chat frame to move to the end of the screen but no further
 		cf:SetClampedToScreen(true) --because it bothers me otherwise
 		cf:SetClampRectInsets(0,0,0,0)
 	--Setup a backround!
-
+	
 	--EditBox Module
 		local ebParts = {'Left', 'Mid', 'Right'}
 		local eb = _G['ChatFrame'..i..'EditBox']
@@ -318,7 +318,7 @@ do
 		eb:SetPoint("BOTTOMRIGHT", UIParent, cfg.ebox.point[1], cfg.ebox.point[2]+cfg.ebox.width, cfg.ebox.point[3])
 		eb:EnableMouse(false)
 		CreateBackdrop(eb)
-
+	
 	--Remove scroll buttons
 		local bf = _G['ChatFrame'..i..'ButtonFrame']
 		bf:Hide()

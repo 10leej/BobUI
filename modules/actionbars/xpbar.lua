@@ -1,22 +1,22 @@
 --XP bar
-local _, cfg = ... --import config
-local addon, ns = ... --get addon namespace
+local _, cfg = ...
+local addon, ns = ...
 local isBeautiful = IsAddOnLoaded("!Beautycase") --!Beautycase check
 
-if not cfg.ActionBars then return end--module control
+
 ------------[[XP Bar]]------------
 if cfg.xp.enable then
-	local function CreateBackdrop(frame)
-		frame:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
+	local function CreateBackdrop(f) --create a backdrop with two border (one !Beautycase enable the other just 2 pixel)
+		f:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8", edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = 2, 
 			insets = {top = 2, left = 2, bottom = 2, right = 2}})
-		frame:SetBackdropColor(unpack(cfg.bColor))
-		frame:SetBackdropBorderColor(unpack(cfg.bColor))
+		f:SetBackdropColor(0,0,0,0.5)
+		f:SetBackdropBorderColor(0,0,0,1)
+		f:SetFrameStrata("LOW")
 		if isBeautiful then
-			frame:CreateBeautyBorder(cfg.border.size.large)
-			frame:SetBeautyBorderTexture(cfg.border.texture)
-			frame:SetBeautyBorderColor(unpack(cfg.border.color))
+			f:CreateBeautyBorder(12)
 		end
 	end
+
 	
 	local classColor = RAID_CLASS_COLORS[select(2, UnitClass("player"))]
 	local _G = getfenv(0)

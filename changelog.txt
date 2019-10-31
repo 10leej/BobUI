@@ -1,0 +1,10 @@
+v6.1b1
+-disable fading on left and right actionbars
+-discovered our leave vehicle button doesn't appear on flight paths
+
+-got ouf_Bob working and converted for WoW Classic, this is using tukz modified version of oUF-classic we're gonna self maintain for now
+-classpower.lua in oUF commented out lines 169-174
+-have not tested group frames
+
+-To Do
+Implement swing timer, nameplates and we should be packaged and good for release on the base UI
