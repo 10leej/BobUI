@@ -9,11 +9,13 @@ if cfg.xp.enable then
 	local function CreateBackdrop(f) --create a backdrop with two border (one !Beautycase enable the other just 2 pixel)
 		f:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8", edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = 2, 
 			insets = {top = 2, left = 2, bottom = 2, right = 2}})
-		f:SetBackdropColor(0,0,0,0.5)
-		f:SetBackdropBorderColor(0,0,0,1)
+		f:SetBackdropColor(unpack(cfg.bColor))
+		f:SetBackdropBorderColor(unpack(cfg.bColor))
 		f:SetFrameStrata("LOW")
 		if isBeautiful then
-			f:CreateBeautyBorder(12)
+			f:CreateBeautyBorder(cfg.border.size.large)
+			f:SetBeautyBorderTexture(cfg.border.texture)
+			f:SetBeautyBorderColor(unpack(cfg.border.color))
 		end
 	end
 
