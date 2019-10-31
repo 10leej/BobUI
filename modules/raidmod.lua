@@ -31,45 +31,4 @@ SlashCmdList["COUNTDOWN"] = function(t)
     onesec = 1
     frame:Show()
 end
-SLASH_COUNTDOWN1 = "/inc"
-
-
---[[
-local PROPOSAL_DURATION = 40
-
-local bar = CreateFrame("StatusBar", nil, LFGDungeonReadyPopup)
-bar:SetPoint("TOPLEFT", LFGDungeonReadyPopup, "BOTTOMLEFT", 0, -5)
-bar:SetPoint("TOPRIGHT", LFGDungeonReadyPopup, "BOTTOMRIGHT", 0, -5)
-bar:SetHeight(5)
-bar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
-bar:SetMinMaxValues(0, PROPOSAL_DURATION)
-
-local spark = bar:CreateTexture(nil, "OVERLAY")
-spark:SetPoint("CENTER", bar:GetStatusBarTexture(), "LEFT")
-spark:SetSize(5, 8) -- height should be about 2.5x width
-spark:SetAlpha(0.5)
-spark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
-spark:SetBlendMode("ADD")
-
-local t = PROPOSAL_DURATION
-local HALF_POINT = PROPOSAL_DURATION / 2
-bar:SetScript("OnUpdate", function(self, elapsed)
-     t = t - elapsed
-     self:SetValue(t)
-     if t > HALF_POINT then
-          self:SetStatusBarColor(1, t / PROPOSAL_DURATION, 0)
-     else
-          self:SetStatusBarColor(1 - (t / PROPOSAL_DURATION), 1, 0)
-     end
-end)
-
-frame:RegisterEvent("LFG_PROPOSAL_SHOW")
-frame:SetScript("OnEvent", function(self, event)
-     if event == "LFG_PROPOSAL_SHOW" then
-          t = PROPOSAL_DURATION
-          self:Show()
-     else
-          self:Hide()
-     end
-end)
-]]
+SLASH_COUNTDOWN1 = "/pull"

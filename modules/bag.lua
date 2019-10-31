@@ -1,29 +1,29 @@
-﻿local _, cfg = ... --import config
+local _, cfg = ... --import config
 local addon, ns = ... --get addon namespace
 local isBeautiful = IsAddOnLoaded("!Beautycase") --!Beautycase check
-local AuroraCheck = IsAddOnLoaded("Aurora")
+if IsAddOnLoaded("Aurora") then return end --yeah no point in skinning the bags twice
 
 if not cfg.bags then return end
-if AuroraCheck then return end
---this is a classic bags layout originally started in AftermathUI that I more or less forked
+
+--This is a classic bags layout based on what's found in AftermathUI
 
 local _G = _G -- import globals for faster usage
 
---backdrop function
+--backdrop function (I should really just add this to a library)
 local function CreateBackdrop(frame)
-frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
-  insets = {top = 2, left = 2, bottom = 2, right = 2}})
-frame:SetBackdropColor(unpack(cfg.bColor))
-frame:SetBackdropBorderColor(unpack(cfg.bColor))
-if isBeautiful then
-  frame:CreateBeautyBorder(cfg.border.size.large)
-  frame:SetBeautyBorderTexture(cfg.border.texture)
-  frame:SetBeautyBorderColor(unpack(cfg.border.color))
-end
+  frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize,
+    insets = {top = 2, left = 2, bottom = 2, right = 2}})
+  frame:SetBackdropColor(unpack(cfg.bColor))
+  frame:SetBackdropBorderColor(unpack(cfg.bColor))
+  if isBeautiful then
+    frame:CreateBeautyBorder(cfg.border.size.large)
+    frame:SetBeautyBorderTexture(cfg.border.texture)
+    frame:SetBeautyBorderColor(unpack(cfg.border.color))
+  end
 end
 
 --bags
-local ContainerFrame1bg = CreateFrame('Frame', nil, _G['ContainerFrame1'])              
+local ContainerFrame1bg = CreateFrame('Frame', nil, _G['ContainerFrame1'])
 ContainerFrame1bg:SetPoint('TOPLEFT', 8, -9)
 ContainerFrame1bg:SetPoint('BOTTOMRIGHT', -4, 3)
 ContainerFrame1bg:SetFrameStrata("HIGH")
@@ -40,53 +40,27 @@ for i = 1, getn(BagFramez) do
   CreateBackdrop(ContainerFramebg)
 end
 
+
 --bank
-_G["BankFrameMoneyFrameInset"]:Hide()
-_G["BankFrameMoneyFrameBorder"]:Hide()
-_G["BankFrameCloseButton"]:Hide()
+_G["BankCloseButton"]:Hide()
 for i = 1, 80 do -- Hide the regions.  There are 80, but there is an included fail-safe.
   local region = select(i, _G["BankFrame"]:GetRegions())
   if not region then break else region:SetAlpha(0) end
 end
-                                
+
 local BankFramebg = CreateFrame('Frame', nil, _G['BankFrame'])
 BankFramebg:SetPoint('TOPLEFT', -35, 45)
 BankFramebg:SetPoint('BOTTOMRIGHT', 20, -10)
 CreateBackdrop(BankFramebg)
 
-for i = 1, 28 do
-  --_G["BankFrameItem"..i.."IconQuestTexture"]:SetAlpha(0)
+--So this part is supposed to skin the items in the bank frame, it uh... Kinda works
+for i = 1, 24 do
    _G["BankFrameItem"..i]:SetBackdrop({
     bgFile = "Interface\\Buttons\\WHITE8x8",
-      insets = {top = -1, left = -1, bottom = -1, right = -1}, 
+      insets = {top = -1, left = -1, bottom = -1, right = -1},
     })
   _G["BankFrameItem"..i]:SetBackdropColor(unpack(cfg.bColor))
 end
-                
-
---Set the search boxes
-if isBeautiful then
-  _G["BagItemSearchBox"]:CreateBeautyBorder(cfg.border.size.large)
-  _G["BagItemSearchBox"]:SetBeautyBorderPadding(5, 0, 0, 0, 5, 0, 0, 0)
-  _G["BankItemSearchBox"]:CreateBeautyBorder(cfg.border.size.large)
-  _G["BankItemSearchBox"]:SetBeautyBorderPadding(6, 1, 1, 1, 6, 1, 1, 1)
-  _G["BagItemAutoSortButton"]:CreateBeautyBorder(cfg.border.size.large)
-  _G["BankItemAutoSortButton"]:CreateBeautyBorder(cfg.border.size.large)
-end
-
---because it wants to be special
-hooksecurefunc("ContainerFrame_Update", function(frame)
-  _G["BagItemSearchBox"]:ClearAllPoints()
-  _G["BagItemSearchBox"]:SetWidth(130)
-  _G["BagItemSearchBox"]:SetHeight(23)
-  _G["BagItemSearchBox"]:SetPoint('BOTTOM', _G["ContainerFrame1"], 'TOP', -7, -58)
-  --_G["BagItemSearchBox"]:SetFrameLevel(20) --make sure it's on top of the frames
-  
-  _G["BagItemAutoSortButton"]:ClearAllPoints()
-  _G["BagItemAutoSortButton"]:SetPoint('LEFT', _G["BagItemSearchBox"], 'RIGHT', 3, 0)
-  _G["BagItemAutoSortButton"]:SetSize(25,25)
-  --_G["BagItemAutoSortButton"]:SetFrameLevel(20) --make sure it's on top of the frames
-end)
 
 --hide stuff we don't want
 for i = 1, 12 do
@@ -95,7 +69,7 @@ for i = 1, 12 do
     select(p, _G["ContainerFrame"..i]:GetRegions()):SetAlpha(0)
   end
 end
-_G["BackpackTokenFrame"]:GetRegions():SetAlpha(0)
+--_G["BackpackTokenFrame"]:GetRegions():SetAlpha(0)
 
 --Set the currency
 for _, frame in pairs({
@@ -120,7 +94,7 @@ hooksecurefunc("ContainerFrame_GenerateFrame", function(frame)
     _G[name.."Item"..i]:SetFrameLevel(4)
     _G[name.."Item"..i]:SetBackdrop({
       bgFile = "Interface\\Buttons\\WHITE8x8",
-        insets = {top = -1, left = -1, bottom = -1, right = -1}, 
+        insets = {top = -1, left = -1, bottom = -1, right = -1},
       })
     _G[name.."Item"..i]:SetBackdropColor(unpack(cfg.bColor))
     _G[name.."Item"..i]:SetNormalTexture("")

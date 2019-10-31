@@ -4,9 +4,10 @@ local addon, ns = ... --get addon namespace
 local isBeautiful = IsAddOnLoaded("!Beautycase") --!Beautycase check
 
 if not cfg.Chat then return end --module control
+
 --backdrop function
-local function CreateBackdrop(frame)
-    frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
+local function CreateBackdrop(frame) --I call this too much, time for a library I think
+    frame:SetBackdrop({bgFile = cfg.backdrop,edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize,
         insets = {top = 2, left = 2, bottom = 2, right = 2}})
     frame:SetBackdropColor(unpack(cfg.bColor))
     frame:SetBackdropBorderColor(unpack(cfg.bColor))
@@ -21,7 +22,7 @@ end
 --guild
 CHAT_GUILD_GET = "|Hchannel:GUILD|h[G]|h %s "
 CHAT_OFFICER_GET = "|Hchannel:OFFICER|hO|h %s "
-    
+
 --raid
 CHAT_RAID_GET = "|Hchannel:RAID|h[R]|h %s "
 CHAT_RAID_WARNING_GET = "[RW] %s "
@@ -35,24 +36,24 @@ CHAT_PARTY_GUIDE_GET =  "|Hchannel:PARTY|h[PG]|h %s "
 --bg and instances
 CHAT_INSTANCE_CHAT_GET = "|Hchannel:INSTANCE_CHAT|h[I]|h %s: "
 CHAT_INSTANCE_CHAT_LEADER_GET = "|Hchannel:INSTANCE_CHAT|h[IL]|h %s: "
-  
---whisper  
+
+--whisper
 CHAT_WHISPER_INFORM_GET = "to %s "
 CHAT_WHISPER_GET = "from %s "
 CHAT_BN_WHISPER_INFORM_GET = "to %s "
 CHAT_BN_WHISPER_GET = "from %s "
-  
+
 --say / yell
 CHAT_SAY_GET = "%s "
 CHAT_YELL_GET = "%s "
-  
+
 --flags
 CHAT_FLAG_AFK = "[AFK] "
 CHAT_FLAG_DND = "[DND] "
 CHAT_FLAG_GM = "[GM] "
 
 local gsub = _G.string.gsub
-      
+
 for i = 1, NUM_CHAT_WINDOWS do
 	if ( i ~= 2 ) then
 		local f = _G["ChatFrame"..i]
@@ -84,7 +85,7 @@ hooksecurefunc('FloatingChatFrame_OnMouseScroll', function(self, dir)
 	end
 end)
 
---[[
+
 ---------------- > URL copy
 local SetItemRef_orig = SetItemRef;
 function ReURL_SetItemRef(link, text, button)
@@ -152,14 +153,14 @@ for i=1, NUM_CHAT_WINDOWS do
 	frame.AddMessage = function(self, text, ...) addmessage(self, ReURL_AddLinkSyntax(text), ...) end
 end
 
-]]
+
 ---------------- > move chat frames to edge of screen
 do
-for i=1, NUM_CHAT_WINDOWS 
-	do local cf = _G[format("%s%d", "ChatFrame", i)] 
-		cf:SetClampedToScreen(true) 
-		cf:SetClampRectInsets(0,0,0,0) 
-	end 
+for i=1, NUM_CHAT_WINDOWS
+	do local cf = _G[format("%s%d", "ChatFrame", i)]
+		cf:SetClampedToScreen(true)
+		cf:SetClampRectInsets(0,0,0,0)
+	end
 end
 
 ---------------- > Chat tabs
@@ -276,18 +277,18 @@ local function kill(f) --kill it! kill it with fire!
 end
 
 do
-	-- Buttons Hiding/moving 
+	-- Buttons Hiding/moving
 	--local kill = function(f) f:Hide() end
 	ChatFrameMenuButton:Hide()
 	ChatFrameMenuButton:SetScript("OnShow", kill)
-	FriendsMicroButton:Hide()
-	FriendsMicroButton:SetScript("OnShow", kill)
+	--QuickJoinToastButton:Hide()
+	ChatFrameChannelButton:Hide()
 
 	for i=1, NUM_CHAT_WINDOWS do
 		local cf = _G[format("%s%d", "ChatFrame", i)]
 	--fix fading
 		cf:SetFading(false)	--Set Chat frame level
-		cf:SetFrameStrata("HIGH")
+		--cf:SetFrameStrata("HIGH") --I'm not sure we actually need this anymore.
 		cf:SetFont(cfg.font, cfg.chat.size, cfg.chat.style)
 	-- Hide chat textures
 		for j = 1, #CHAT_FRAME_TEXTURES do
@@ -296,19 +297,20 @@ do
 	--Unlimited chatframes resizing
 		cf:SetMinResize(0,0)
 		cf:SetMaxResize(0,0)
-	
+
 	--Allow the chat frame to move to the end of the screen but no further
 		cf:SetClampedToScreen(true) --because it bothers me otherwise
 		cf:SetClampRectInsets(0,0,0,0)
-	
+	--Setup a backround!
+
 	--EditBox Module
 		local ebParts = {'Left', 'Mid', 'Right'}
 		local eb = _G['ChatFrame'..i..'EditBox']
 		for _, ebPart in ipairs(ebParts) do
 			_G['ChatFrame'..i..'EditBox'..ebPart]:SetTexture(0, 0, 0, 0)
 			local ebed = _G['ChatFrame'..i..'EditBoxFocus'..ebPart]
-			ebed:SetTexture(0,0,0,0)
-			ebed:SetHeight(cfg.ebox.height)
+			--ebed:SetTexture(0,0,0,0)
+			--ebed:SetHeight(cfg.ebox.height)
 		end
 		eb:SetAltArrowKeyMode(false)
 		eb:ClearAllPoints()
@@ -316,41 +318,13 @@ do
 		eb:SetPoint("BOTTOMRIGHT", UIParent, cfg.ebox.point[1], cfg.ebox.point[2]+cfg.ebox.width, cfg.ebox.point[3])
 		eb:EnableMouse(false)
 		CreateBackdrop(eb)
-	
+
 	--Remove scroll buttons
 		local bf = _G['ChatFrame'..i..'ButtonFrame']
 		bf:Hide()
 		bf:SetScript("OnShow",  kill)
 	end
 end
---Enable/Disable mouse for editbox
-eb_mouseon = function()
-	for i =1, NUM_CHAT_WINDOWS do
-		local eb = _G['ChatFrame'..i..'EditBox']
-		eb:EnableMouse(true)
-	end
-end
-
---[[
---apparently default chat auto fixes this
-eb_mouseoff = function()
-	for i =1, NUM_CHAT_WINDOWS do
-		local eb = _G['ChatFrame'..i..'EditBox']
-		eb:EnableMouse(false)
-	end
-end
-hooksecurefunc("ChatFrame_OpenChat",eb_mouseon)
-hooksecurefunc("ChatEdit_SendText",eb_mouseoff)
-]]
-
--- toastframe
-CreateBackdrop(BNToastFrame)
-CreateBackdrop(BNToastFrame.TooltipFrame)
-
-BNToastFrameCloseButton:SetAlpha(0)
-
-BNToastFrame:SetClampedToScreen(true)
-BNToastFrame:SetClampRectInsets(-15,15,15,-15)
 
 --hide realm names in chat
 local a,g = getmetatable(DEFAULT_CHAT_FRAME).__index.AddMessage,gsub

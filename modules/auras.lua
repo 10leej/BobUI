@@ -53,6 +53,7 @@ TempEnchant1:SetPoint(unpack(cfg.buff.position))
 TempEnchant2:ClearAllPoints()
 TempEnchant2:SetPoint('TOPRIGHT', TempEnchant1, 'TOPLEFT', -cfg.buff.paddingX, 0)
 
+--[[ not sure, but this throws errors in 7.3.5
 ConsolidatedBuffs:SetSize(20, 20)
 ConsolidatedBuffs:ClearAllPoints()
 ConsolidatedBuffs:SetPoint('BOTTOM', TempEnchant1, 'TOP', 1, 2)
@@ -66,23 +67,22 @@ ConsolidatedBuffsCount:SetFont(cfg.font, 16, cfg.style)
 ConsolidatedBuffsCount:SetShadowOffset(0, 0)
 
 ConsolidatedBuffsTooltip:SetScale(1.2)
-
+]]
 local function UpdateFirstButton(self)
-    if (self and self:IsShown()) then
-        self:ClearAllPoints()
-        if (UnitHasVehicleUI('player')) then
-            self:SetPoint('TOPRIGHT', TempEnchant1)
-            return
-        else
-            if (BuffFrame.numEnchants > 0) then
-                self:SetPoint('TOPRIGHT', _G['TempEnchant'..BuffFrame.numEnchants], 'TOPLEFT', -cfg.buff.paddingX, 0)
-                return
-            else
-                self:SetPoint('TOPRIGHT', TempEnchant1)
-                return
-            end
-        end
-    end
+if (self and self:IsShown()) then
+	self:ClearAllPoints()
+	--if (UnitHasVehicleUI('player')) then
+	  --  self:SetPoint('TOPRIGHT', TempEnchant1)
+		--return
+	--else
+		if (BuffFrame.numEnchants > 0) then
+			self:SetPoint('TOPRIGHT', _G['TempEnchant'..BuffFrame.numEnchants], 'TOPLEFT', -cfg.buff.paddingX, 0)
+			return
+		else
+			self:SetPoint('TOPRIGHT', TempEnchant1)
+			return
+		end
+	end
 end
 
 local function CheckFirstButton()
@@ -100,10 +100,10 @@ hooksecurefunc('BuffFrame_UpdatePositions', function()
     end
 end)
 
-hooksecurefunc('BuffFrame_UpdateAllBuffAnchors', function()  
+hooksecurefunc('BuffFrame_UpdateAllBuffAnchors', function()
     local previousBuff, aboveBuff
     local numBuffs = 0
-    local numTotal = BuffFrame.numEnchants 
+    local numTotal = BuffFrame.numEnchants
 
     for i = 1, BUFF_ACTUAL_DISPLAY do
         local buff = _G['BuffButton'..i]
@@ -133,7 +133,7 @@ hooksecurefunc('BuffFrame_UpdateAllBuffAnchors', function()
 end)
 
 hooksecurefunc('DebuffButton_UpdateAnchors', function(self, index)
-    local numBuffs = BUFF_ACTUAL_DISPLAY + BuffFrame.numEnchants
+--[[    local numBuffs = BUFF_ACTUAL_DISPLAY + BuffFrame.numEnchants
     if (ShouldShowConsolidatedBuffFrame()) then
         numBuffs = numBuffs + 1 -- consolidated buffs
     end
@@ -141,11 +141,11 @@ hooksecurefunc('DebuffButton_UpdateAnchors', function(self, index)
     local rowSpacing
     local debuffSpace = cfg.debuff.size + cfg.debuff.paddingY
     local numRows = ceil(numBuffs/cfg.debuff.PerRow)
-
+]]
     if (numRows and numRows > 1) then
         rowSpacing = -numRows * debuffSpace
-    else
-        rowSpacing = -debuffSpace
+--    else
+--        rowSpacing = -debuffSpace
     end
 
     local buff = _G[self..index]
@@ -186,7 +186,7 @@ for i = 1, NUM_TEMP_ENCHANT_FRAMES do
     local border = _G['TempEnchant'..i..'Border']
     border:ClearAllPoints()
     border:SetPoint('TOPRIGHT', button, 1, 1)
-    border:SetPoint('BOTTOMLEFT', button, -1, -1)    
+    border:SetPoint('BOTTOMLEFT', button, -1, -1)
     border:SetTexture(cfg.debuff.border)
     border:SetTexCoord(0, 1, 0, 1)
     border:SetVertexColor(0.9, 0.25, 0.9)

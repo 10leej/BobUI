@@ -6,7 +6,7 @@ local isBeautiful = IsAddOnLoaded("!Beautycase") --!Beautycase check
 
 --local backdrop function
 local function CreateBackdrop(frame)
-    frame:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize, 
+    frame:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8x8",edgeFile = "Interface\\Buttons\\WHITE8x8", edgeSize = cfg.pixelbordersize,
         insets = {top = 2, left = 2, bottom = 2, right = 2}})
     frame:SetBackdropColor(unpack(cfg.bColor))
     frame:SetBackdropBorderColor(unpack(cfg.bColor))
@@ -16,6 +16,15 @@ local function CreateBackdrop(frame)
 		frame:SetBeautyBorderColor(unpack(cfg.border.color))
 	end
 end
+
+--Some quick cheaty functions for variable bordersizes, do need to expand on this function
+local function Borderize(frame) -- style our frame
+    if frame then
+        frame:CreateBeautyBorder(12)
+    end
+end
+
+--Skin some of the default UI elements
 if isBeautiful then
 	--Game Menu (even though you can get the same thing by just rght clicking the minimap)
 	a = CreateFrame("Frame")
@@ -27,52 +36,56 @@ if isBeautiful then
 				GameMenuButtonHelp:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonHelp:SetBeautyBorderPadding(1)
 				GameMenuButtonHelp:SetBeautyBorderTexture(cfg.border.texture)
-				
+
 				GameMenuButtonStore:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonStore:SetBeautyBorderPadding(1)
 				GameMenuButtonStore:SetBeautyBorderTexture(cfg.border.texture)
-				
+
 				GameMenuButtonOptions:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonOptions:SetBeautyBorderPadding(1)
 				GameMenuButtonOptions:SetBeautyBorderTexture(cfg.border.texture)
-				
+
 				GameMenuButtonUIOptions:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonUIOptions:SetBeautyBorderPadding(1)
 				GameMenuButtonUIOptions:SetBeautyBorderTexture(cfg.border.texture)
-				
+
 				GameMenuButtonKeybindings:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonKeybindings:SetBeautyBorderPadding(1)
 				GameMenuButtonKeybindings:SetBeautyBorderTexture(cfg.border.texture)
-				
+
 				GameMenuButtonMacros:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonMacros:SetBeautyBorderPadding(1)
 				GameMenuButtonMacros:SetBeautyBorderTexture(cfg.border.texture)
-				
+
+				GameMenuButtonAddons:CreateBeautyBorder(cfg.border.size.large)
+				GameMenuButtonAddons:SetBeautyBorderPadding(1)
+				GameMenuButtonAddons:SetBeautyBorderTexture(cfg.border.texture)
+
 				GameMenuButtonLogout:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonLogout:SetBeautyBorderPadding(1)
 				GameMenuButtonLogout:SetBeautyBorderTexture(cfg.border.texture)
-				
+
 				GameMenuButtonQuit:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonQuit:SetBeautyBorderPadding(1)
 				GameMenuButtonQuit:SetBeautyBorderTexture(cfg.border.texture)
-				
+
 				GameMenuButtonContinue:CreateBeautyBorder(cfg.border.size.large)
 				GameMenuButtonContinue:SetBeautyBorderPadding(1)
 				GameMenuButtonContinue:SetBeautyBorderTexture(cfg.border.texture)
 			end
-			
+
 			StaticPopup1Button1:CreateBeautyBorder(cfg.border.size.large)
 			StaticPopup1Button1:SetBeautyBorderPadding(1)
 			StaticPopup1Button1:SetBeautyBorderTexture(cfg.border.texture)
-			
+
 			StaticPopup1Button2:CreateBeautyBorder(cfg.border.size.large)
 			StaticPopup1Button2:SetBeautyBorderPadding(1)
 			StaticPopup1Button2:SetBeautyBorderTexture(cfg.border.texture)
-			
+
 			DropDownList1MenuBackdrop:CreateBeautyBorder(cfg.border.size.large)
 			DropDownList1MenuBackdrop:SetBeautyBorderPadding(-1)
 			DropDownList1MenuBackdrop:SetBeautyBorderTexture(cfg.border.texture)
-			
+
 			DropDownList2MenuBackdrop:CreateBeautyBorder(cfg.border.size.large)
 			DropDownList2MenuBackdrop:SetBeautyBorderPadding(-1)
 			DropDownList2MenuBackdrop:SetBeautyBorderTexture(cfg.border.texture)
@@ -102,6 +115,7 @@ if isBeautiful then
 end
 
 --Raid Manager
+--[[
 if not CompactRaidFrameManager then LoadAddOn("Blizzard_CompactRaidFrames") end
 
 --hide stuff
@@ -162,3 +176,42 @@ CreateBackdrop(CompactRaidFrameManagerDisplayFrameHiddenModeToggle)
 CreateBackdrop(CompactRaidFrameManagerDisplayFrameConvertToRaid)
 CreateBackdrop(CompactRaidFrameManager)
 CompactRaidFrameManagerToggleButton:SetNormalTexture("Interface\\AddOns\\BobUI\\media\\buttons\\RaidPanel-Toggle")
+
+]]
+
+--This is how you skin the default raid frames
+f = CreateFrame("Frame")
+f:SetScript("OnEvent", function(self, event, ...)
+	if event == "GROUP_ROSTER_UPDATE" then
+		for i = 1, 5 do -- Party Frames
+			Borderize(_G["CompactPartyFrameMember" .. i])
+		end
+		for i = 1, 80 do -- Raid Frames
+			Borderize(_G["CompactRaidFrame" .. i])
+		end
+		for i = 1, 5 do -- Raid Frames Group 1
+			Borderize(_G["CompactRaidGroup1Member" .. i])
+		end
+		for i = 1, 5 do -- Raid Frames Group 2
+			Borderize(_G["CompactRaidGroup2Member" .. i])
+		end
+		for i = 1, 5 do -- Raid Frames Group 3
+			Borderize(_G["CompactRaidGroup3Member" .. i])
+		end
+		for i = 1, 5 do -- Raid Frames Group 5
+			Borderize(_G["CompactRaidGroup4Member" .. i])
+		end
+		for i = 1, 5 do -- Raid Frames Group 6
+			Borderize(_G["CompactRaidGroup5Member" .. i])
+		end
+	elseif event == "PLAYER_ENTERING_WORLD" then
+		--Set the default raid frame options to how we want them
+		SetCVar("useCompactPartyFrames", 1)
+		SetCVar("raidOptionShowBorders", 0)
+		SetCVar("raidFramesDisplayPowerBars", 1)
+		SetCVar("raidFramesDisplayClassColor", 1)
+	end
+end)
+f:RegisterEvent("PLAYER_LOGIN")
+f:RegisterEvent("GROUP_ROSTER_UPDATE")
+f:RegisterEvent("ADDON_LOADED")

@@ -3,14 +3,14 @@ local addon, ns = ... --get addon namespace
 
 --[[
 Note to users new to a config.lua file:
-	This is a file intended to provide configuration options,you edit these files quite simply. Make a change and 
+	This is a file intended to provide configuration options,you edit these files quite simply. Make a change and
 save the file. You can even edit the files while the game is loaded, just change the value save it then type /reload
 or /rl into the game chat to realod the user interface.
-	I highly recommend keeping all the punctuation in the same place as it can cause errors if you accident;y remove
+	I highly recommend keeping all the punctuation in the same place as it can cause errors if you accidently remove
 a comma.
 
 Regards:
-10leej aka Eomi < Jehoovas Witnesses > US - Uther
+10leej aka Jos - [A] <Reforged> - Deviate Delight - WoW Classic
 ]]
 
 --Module Control
@@ -27,6 +27,7 @@ cfg.Minimap			= true 	--Minimap
 cfg.NamePlates		= true 	--Nameplates
 cfg.Panels          = true  --Panels (the rectangles
 cfg.ToolTip			= true 	--Tooltip
+cfg.UnitFrames		= true 	--UnitFrames
 cfg.WatchFrame		= true 	--Watch frame mover (aka quest frame, the tracklist, ect)
 cfg.ZoneText		= true 	--the zone text
 --------------------------------------------------------------------------------------------------
@@ -51,16 +52,10 @@ cfg.border = { --!Beautycase border config
 	color = { 1, 1, 1 }, --Colors work best with the white layout [[This function does not support aura frames]]
 }
 --Enhancements
-cfg.AutoScaleUI		= false 	--Auto scales UI to be pixel perfect
-cfg.UIscale		 	= 0.711111111 	--Manually set the UI scale (if AutoScale false)
-cfg.AutoAcceptRolls = true  --Auto accepts item rolls regardless of need/greed/de
-cfg.autoshot		= true  --Auto screenshot on achievements
-cfg.automate		= true  --Automated repair (with guild funds) and sell greys
-cfg.HideBossEmote	= false --Blizzards stripped down version of a bossmod
-cfg.Interrupts		= true  --Announce interrupts
-cfg.rez				= true  --Rez announcer --Channels are SAY,EMOTE,PARTY,INSTANCE_CHAT,GUILD,OFFICER,YELL,RAID,RAID_WARNING
-cfg.channelannounce = "INSTANCE_CHAT" --Pick a channel to shout in.
-cfg.autoquest 		= true --auto accept/complete quests
+cfg.AutoScaleUI		= true 	--Auto scales UI to be pixel perfect
+cfg.UIscale		 	= 1 	--Manually set the UI scale (if AutoScale false)
+cfg.AutoVendor		= true  --Automated repair (with guild funds) and sell greys
+cfg.MaxCamera		= true  --Increases the Maximum camera distance beyond default
 
 cfg.panels = { --six panels move em where ya want
     A = {--name: BobPanelA
@@ -99,7 +94,16 @@ cfg.panels = { --six panels move em where ya want
 		width = 60,
 		height = 60,
 	},
-	
+
+}
+
+--------------------------------------------------------------------------------------------------
+------------------------------------------[[UnitFrames]]------------------------------------------
+--------------------------------------------------------------------------------------------------
+cfg.player = {
+	position = {"CENTER", UIParent, "CENTER", 0, 0},
+	height = 80,
+	width = 200,
 }
 
 --------------------------------------------------------------------------------------------------
@@ -121,20 +125,8 @@ cfg.tooltip = {
 --------------------------------------------------------------------------------------------------
 ------------------------------------------[[NamePlates]]------------------------------------------
 --------------------------------------------------------------------------------------------------
-cfg.nameplates = { --we're getting newer fancier ones at some point
-	fontsize = 8,					-- Font size for Name and HP text
-	fontflag = "THINOUTLINE",		-- Text outline
-	hpHeight = 10,					-- Health bar height
-	hpWidth = 110,					-- Health bar width
-	namecolor = true,				-- Colorize names based on reaction
-	raidIconSize = 18,				-- Raid icon size
-	combat_toggle = false, 			-- If set to true nameplates will be automatically toggled on when you enter the combat
-	castbar = {
-		icon_size = 20,				-- Cast bar icon size
-		height = 10,					-- Cast bar height
-		width = 100,				-- Cast bar width
-		cast_time = true,			-- display cast time
-	},
+cfg.nameplates = { --not valid as Nameplates currently don't exist, yet
+
 }
 --------------------------------------------------------------------------------------------------
 -------------------------------------------[[Minimap]]--------------------------------------------
@@ -142,37 +134,27 @@ cfg.nameplates = { --we're getting newer fancier ones at some point
 --Minimap size
 cfg.minimap = {
 	position = {'TOPRIGHT',UIParent,0,0},
-	width = 180,			
+	width = 180,
 	height = 180,
 }
 --Zone text
 cfg.zone = {
 	position = {"TOP", UIParent, "TOP", 0, -3},
-	fontsize = 12,
+	fontsize = 14,
 	justify = "CENTER",
 }
 --Time
 cfg.time = {
-	position = {"TOP", UIParent, "TOP", 0, -10},
+	position = {"TOP", UIParent, "TOP", 0, -12},
 	fontsize = 12,
 }
---WatchFrame
-cfg.wf = {
-	position = {'RIGHT',UIParent,-100,0},
-	height = 300,
-	autocollapse = true, --collapses objective tracker in arena, boss fights battleground ect
-}
-cfg.WorldMap = {
-    makeMovable = true, --this only works with the smaller world make not the fullscreen
-    fadeMapOnMove = true,
-    fadeAlpha = .7,
-}
+
 --------------------------------------------------------------------------------------------------
 ---------------------------------------------[[Chat]]---------------------------------------------
 --------------------------------------------------------------------------------------------------
 cfg.chat = {
 	style = nil,
-	size = 12,
+	size = 14,
 	style_chat_tabs = true, --false for blizzard style, true for a newer style
 }
 --EditBox
@@ -188,7 +170,7 @@ cfg.ebox = {
 cfg.buffBorderColor = {.25, .25, .25}
 --Debuffs
 cfg.buff = { --debuff frame anchors off the bottom of thew buff frame
-	position = {"TOPRIGHT", Minimap, "TOPLEFT", -4, -4},
+	position = {"TOPRIGHT", Minimap, "TOPLEFT", -8, -4},
 	size = 36,
 	scale = 1,
 	PerRow = 8,
@@ -212,16 +194,12 @@ cfg.debuff = { --debuff frame anchors off the bottom of thew buff frame
 --------------------------------------------------------------------------------------------------
 ---------------------------------------------[[Bags]]---------------------------------------------
 --------------------------------------------------------------------------------------------------
-cfg.bags = {
-	onebag = true, --enable a one bag option, set to false for classic style bags
-	spacing = 2, --space between each button only affects onebag
-	bpr = 11, --"buttons per row" only affects onebag
-}
+--Dereciated, I'll keep skinning the OG bags for now I think.
 --------------------------------------------------------------------------------------------------
 ------------------------------------------[[ActionBars]]------------------------------------------
 --------------------------------------------------------------------------------------------------
 cfg.hidemacro = false
-cfg.hidehotkey = true
+cfg.hidehotkey = false
 cfg.RangeColoring = true
 cfg.alpha = 1
 cfg.fadealpha = 0
@@ -262,21 +240,21 @@ cfg.bar3 = {
 	fade = false,
 }
 cfg.bar4 = {
-	position = {"LEFT",UIParent,2,100}, --position
+	position = {"LEFT",UIParent,2,0}, --position
 	scale = 1, --scale
 	size = 36, --size of actionbar buttons
 	padding = 0, --verticle spacing
 	margin = 4, --horizontal spacing
-	fade = true,
+	fade = false,
 	use6x2 = true,
 }
 cfg.bar5 = {
-	position = {"RIGHT",UIParent,-2,100}, --position
+	position = {"RIGHT",UIParent,-2,0}, --position
 	scale = 1, --scale
 	size = 36, --size of actionbar buttons
 	padding = 0, --verticle spacing
 	margin = 4, --horizontal spacing
-	fade = true,
+	fade = false,
 	use6x2 = true,
 }
 cfg.pet = {
@@ -288,11 +266,11 @@ cfg.pet = {
 	fade = false,
 }
 cfg.stance = {
-	position = {"BOTTOM",UIParent,-70,122}, --position
+	position = {"BOTTOM",UIParent,-90,122}, --position
 	scale = 1, --scale
 	size = 30, --size of actionbar buttons
 	padding = 0, --verticle spacing
-	margin = 4, --horizontal spacing
+	margin = 0, --horizontal spacing
 	fade = false,
 }
 cfg.extra = {
@@ -301,12 +279,13 @@ cfg.extra = {
 	size = 50, --size of actionbar buttons
 }
 cfg.bag = {
-	position = {"TOPRIGHT",Minimap,"BOTTOMRIGHT",-3,-2}, --position
-	scale = 1, --scale
+	enable = true,
+	position = {"TOPRIGHT",Minimap,"BOTTOMRIGHT",-3,-4}, --position
+	scale = 0.85, --scale
 	fade = false,
 }
 cfg.vehicle = {
-	position = {"BOTTOM",UIParent,0,122}, --position
+	position = {"BOTTOM",UIParent,0,160}, --position
 	scale = 1, --scale
 	size = 50, --size of actionbar buttons
 	padding = 0, --verticle spacing
@@ -314,7 +293,7 @@ cfg.vehicle = {
 }
 cfg.xp = {
 	enable = true,
-	position = {"TOPLEFT",UIParent,0,0},
+	position = {"TOPLEFT",UIParent,15,-15},
 	width = 436,
 	height = 15,
 }

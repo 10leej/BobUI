@@ -31,7 +31,7 @@ function addon:new()
 	self:SetPoint(unpack(cfg.DataText.position))
 	self:SetWidth(50)
 	self:SetHeight(13)
-	
+
 	self:SetScript("OnUpdate", self.update)
 	self:SetScript("OnEnter", self.enter)
 	self:SetScript("OnLeave", function() GameTooltip:Hide() end)
@@ -40,14 +40,14 @@ end
 local last = 0
 function addon:update(elapsed)
 	last = last + elapsed
-	
-	if last > 1 then	
+
+	if last > 1 then
 		fps = GetFramerate()
 		fps = "|c00ffffff"..floor(fps).."|r fps "
-		
+
 		lag = select(3, GetNetStats())
 		lag = "|c00ffffff"..lag.."|r ms "
-		
+
 		last = 0
 
 		text:SetText(fps..lag)
@@ -67,7 +67,7 @@ function addon:enter()
 	nr = 0
 	
 	UpdateAddOnMemoryUsage()
-	
+
 	for i=1, GetNumAddOns(), 1 do
 		if (GetAddOnMemoryUsage(i) > 0 ) then
 			memory = GetAddOnMemoryUsage(i)
@@ -76,16 +76,16 @@ function addon:enter()
 			total = total + memory
 		end
 	end
-	
+
 	table.sort(addons, addoncompare)
-	
+
 	for _, entry in pairs(addons) do
 		if nr < cfg.DataText.addonlist then
 			GameTooltip:AddDoubleLine(entry.name, memformat(entry.memory), 1, 1, 1, 1, 1, 1)
 			nr = nr + 1
 		end
 	end
-	
+
 	GameTooltip:AddLine(" ")
 	GameTooltip:AddDoubleLine("Total", memformat(total), color.r, color.g, color.b, color.r, color.g, color.b)
 	GameTooltip:AddDoubleLine("Total with Default UI", memformat(blizz), color.r, color.g, color.b, color.r, color.g, color.b)
