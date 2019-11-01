@@ -246,6 +246,10 @@ if cfg.bar5.fade then
 end
 ------------[[LeaveVehicle]]------------
 --create the frame to hold the buttons
+--[[
+	Frame name of what we actually want to work with
+	MainMenuBarLeaveVehicleButton
+]]
 local frame = CreateFrame("Frame", "Bob_LeaveVehicle", UIParent, "SecureHandlerStateTemplate")
 frame:SetWidth(num*cfg.vehicle.size + (num-1)*cfg.vehicle.margin + 2*cfg.vehicle.padding)
 frame:SetHeight(cfg.vehicle.size + 2*cfg.vehicle.padding)

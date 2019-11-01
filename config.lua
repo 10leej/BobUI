@@ -56,6 +56,7 @@ cfg.AutoScaleUI		= true 	--Auto scales UI to be pixel perfect
 cfg.UIscale		 	= 1 	--Manually set the UI scale (if AutoScale false)
 cfg.AutoVendor		= true  --Automated repair (with guild funds) and sell greys
 cfg.MaxCamera		= true  --Increases the Maximum camera distance beyond default
+cfg.HideBossEmote	= true  --Kill Blizzard boss emotes, assuming those exist in classic
 
 cfg.panels = { --six panels move em where ya want
     A = {--name: BobPanelA
