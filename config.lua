@@ -259,7 +259,7 @@ cfg.bar5 = {
 	use6x2 = true,
 }
 cfg.pet = {
-	position = {"BOTTOM",UIParent,70,122}, --position
+	position = {"BOTTOM",UIParent,0,122}, --position
 	scale = 1, --scale
 	size = 30, --size of actionbar buttons
 	padding = 0, --verticle spacing
@@ -281,7 +281,7 @@ cfg.extra = {
 }
 cfg.bag = {
 	enable = true,
-	position = {"TOPRIGHT",Minimap,"BOTTOMRIGHT",-3,-4}, --position
+	position = {"BOTTOMRIGHT",UIParent,0,145}, --position
 	scale = 0.85, --scale
 	fade = false,
 }
