@@ -281,9 +281,9 @@ cfg.extra = {
 }
 cfg.bag = {
 	enable = true,
-	position = {"BOTTOMRIGHT",UIParent,0,145}, --position
+	position = {"TOPRIGHT",Minimap,"BOTTOMRIGHT",-3,-4}, --position
 	scale = 0.85, --scale
-	fade = false,
+	fade = true,
 }
 cfg.vehicle = {
 	position = {"BOTTOM",UIParent,0,160}, --position
