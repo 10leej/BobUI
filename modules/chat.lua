@@ -278,10 +278,8 @@ end
 
 do
 	-- Buttons Hiding/moving 
-	--local kill = function(f) f:Hide() end
 	ChatFrameMenuButton:Hide()
-	ChatFrameMenuButton:SetScript("OnShow", kill)
-	--QuickJoinToastButton:Hide()
+	ChatFrameMenuButton:SetScript("OnShow", nil)
 	ChatFrameChannelButton:Hide()
 
 	for i=1, NUM_CHAT_WINDOWS do
@@ -301,7 +299,6 @@ do
 	--Allow the chat frame to move to the end of the screen but no further
 		cf:SetClampedToScreen(true) --because it bothers me otherwise
 		cf:SetClampRectInsets(0,0,0,0)
-	--Setup a backround!
 	
 	--EditBox Module
 		local ebParts = {'Left', 'Mid', 'Right'}
@@ -322,7 +319,7 @@ do
 	--Remove scroll buttons
 		local bf = _G['ChatFrame'..i..'ButtonFrame']
 		bf:Hide()
-		bf:SetScript("OnShow",  kill)
+		bf:SetScript("OnShow",  nil)
 	end
 end
 
