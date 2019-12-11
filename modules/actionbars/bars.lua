@@ -369,6 +369,7 @@ local bagbuttonList = {
         CharacterBag1Slot,
         CharacterBag2Slot,
         CharacterBag3Slot,
+        KeyRingButton,
 }
 local NUM_BAG_BUTTONS = # bagbuttonList
 local buttonWidth = MainMenuBarBackpackButton:GetWidth()

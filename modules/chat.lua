@@ -276,10 +276,17 @@ local function kill(f) --kill it! kill it with fire!
 	f:Hide()
 end
 
+--[[
+Parking this stuff here to help remind myself as to why Temporary chat windows aren't skinning right
+auto generated chat frames
+FCF_OpenTemporaryWindow + CHAT_FRAMES
+https://www.wowinterface.com/forums/showpost.php?p=292207&postcount=4
+]]
+
 do
 	-- Buttons Hiding/moving 
 	ChatFrameMenuButton:Hide()
-	ChatFrameMenuButton:SetScript("OnShow", nil)
+	ChatFrameMenuButton:SetScript("OnShow", kill)
 	ChatFrameChannelButton:Hide()
 
 	for i=1, NUM_CHAT_WINDOWS do
@@ -319,7 +326,7 @@ do
 	--Remove scroll buttons
 		local bf = _G['ChatFrame'..i..'ButtonFrame']
 		bf:Hide()
-		bf:SetScript("OnShow",  nil)
+		bf:SetScript("OnShow",  kill)
 	end
 end
 
